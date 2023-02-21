@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Crud Operation</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">USER DETAILED FORM</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn">
+            Edit in the Form
+        </button>
+    </div>
+    <hr>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="userdetails">Add user details Here</h5>
+                    <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#DataForm"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="container">
+                        <form action="#" id="mainform" onsubmit="return manageData()">
+                            <div class="mb-3 row">
+                                <label for="firstname" class="col-sm-3 col-form-label"><b style="color:red">*</b>First Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="firstname" id="firstname"
+                                        placeholder="Enter your first name here...">
+                                        <span id="errorN" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="lastname" class="col-sm-3 col-form-label"><b style="color:red">*</b>Last Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="lastname" id="lastname"
+                                        placeholder="Enter your last name here...">
+                                        <span id="errorL" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="Email" class="col-sm-3 col-form-label"><b style="color:red">*</b>Email:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="email" id="email"
+                                        placeholder="Enter your Email here...">
+                                        <span id="errorE" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="Adress" class="col-sm-3 col-form-label"><b style="color:red">*</b>Adress:</label>
+                                <div class="col-sm-9">
+                                    <textarea class="form-control" name="address" id="address"
+                                        placeholder="Enter your address">
+       </textarea>
+                                <span id="errorA" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="phone" class="col-sm-3 col-form-label"><b style="color:red">*</b>Phone:</label>
+                                <div class="col-sm-9">
+                                    <input type="tel" class="form-control" name="phone" id="phone"
+                                        placeholder="0123456789" pattern="[0-9]{10}">
+                                        <span id="errorP" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <div class="mb-3 mt-3 d-flex" id="gendererror">
+                                    <label for="address"><b style="color:red">*</b>Gender : </label>
+                                    <div class="form-check ms-5">
+                                        <input class="form-check-input" type="radio" name="gender" id="female"
+                                            value="female">
+                                        <label class="form-check-label" for="female">
+                                            Female
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input ms-1" type="radio" name="gender" id="male"
+                                            value="male">
+                                        <label class="form-check-label ms-2" for="male">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <span id="errorG" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="Birthdate" class="col-sm-3 col-form-label"><b style="color:red">*</b>Birthdate:</label>
+                                <div class="col-sm-9">
+                                    <input type="date" class="form-control" name="birthdate" id="birthdate"
+                                        placeholder="mm/dd/yy">
+                                        <span id="errorD" class="text-danger fw-bold"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <button class="btn btn-primary" name="submit" id="submit" type="submit">Create User</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="employees-table">
+          <table class="table table-hover list" id="employeeList">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col-sm-3">Id</th>
+                <th scope="col-sm-3">First Name</th>
+                <th scope="col-sm-3">Last Name</th>
+                <th scope="col-sm-3">Email Id</th>
+                <th scope="col-sm-3">Address</th>
+                <th scope="col-sm-3">Phone</th>
+                <th scope="col-sm-3">Gender</th>
+                <th scope="col-sm-2">Birth-date</th>
+                <th scope="col-sm-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+    
+            </tbody>
+          </table>
+        </div>
+        <script src="script.js"></script>
+      </div>
+    
+</body>
+
+</html>

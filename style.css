@@ -1,0 +1,15 @@
+.employees-table {
+    float: left;
+    border-style: solid;
+    padding: 20px;
+    margin: auto;
+    width: 100%; }
+    body > table{
+        width: 100%;
+    }
+    
+    button{
+        cursor: pointer;
+        margin-right: 6px;
+        padding: 4px;
+    }
